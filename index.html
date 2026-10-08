@@ -48,50 +48,92 @@
 
   <!-- Main Content -->
   <main class="main" id="main">
-    <!-- Real Blooket blooks background pattern -->
     <div class="bg-blooks"></div>
-    <!-- Page title (top-left) -->
     <h1 class="page-header" id="page-header">Market</h1>
 
-    <!-- Packs (Market page only) -->
     <div class="packs-row" id="packs-row">
-      <div class="pack-card" aria-hidden="true">
+      <div class="pack-card" id="spooky-pack" role="button" tabindex="0">
         <div class="pack-img-container">
-          <img
-            class="pack-shadow"
-            height="80"
-            width="80"
-            alt=""
-            draggable="false"
-            src="https://ac.blooket.com/blookassets/packs/icons/spooky.svg"
-          />
-          <img
-            class="pack-img"
-            height="165"
-            width="150"
-            alt="Spooky"
-            draggable="false"
-            src="https://ac.blooket.com/blookassets/packs/spooky.png"
-          />
+          <img class="pack-shadow" height="80" width="80" alt="" draggable="false"
+            src="https://ac.blooket.com/blookassets/packs/icons/spooky.svg" />
+          <img class="pack-img" height="165" width="150" alt="Spooky" draggable="false"
+            src="https://ac.blooket.com/blookassets/packs/spooky.png" />
         </div>
         <div class="pack-bottom">
-          <img
-            class="pack-price-icon"
-            height="23"
-            width="23"
-            alt=""
-            draggable="false"
-            src="https://ac.blooket.com/dashboard/4e10e84779aaa361fd4310c02366e37ebee7b60d/_next/static/media/token.8de4e1b8.svg"
-          />
+          <img class="pack-price-icon" height="23" width="23" alt="" draggable="false"
+            src="https://ac.blooket.com/dashboard/4e10e84779aaa361fd4310c02366e37ebee7b60d/_next/static/media/token.8de4e1b8.svg" />
           25
         </div>
         <div class="pack-overlay"></div>
       </div>
     </div>
 
-    <!-- Watermark (bottom-right) -->
     <div class="watermark">Lag0n</div>
   </main>
+
+  <!-- Purchase Modal -->
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <div class="purchase-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button type="button" class="modal-close" id="modal-close" aria-label="Close">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 352 512" width="14" height="20">
+          <path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/>
+        </svg>
+      </button>
+      <div class="modal-body">
+        <div class="modal-pack-preview">
+          <div class="modal-pack-img-wrap">
+            <img class="modal-pack-shadow" alt="" draggable="false"
+              src="https://ac.blooket.com/blookassets/packs/icons/spooky.svg" />
+            <img class="modal-pack-img" alt="Spooky" draggable="false"
+              src="https://ac.blooket.com/blookassets/packs/spooky.png" />
+          </div>
+          <div class="modal-pack-overlay"></div>
+        </div>
+        <div class="modal-form">
+          <div class="modal-info">
+            <h2 class="modal-title" id="modal-title">Spooky Pack</h2>
+            <button type="button" class="row-btn" id="drop-rates-btn">Show Drop Rates</button>
+            <div class="modal-tags">
+              <span class="price-tag">
+                <img height="19" width="18" alt="Token"
+                  src="https://ac.blooket.com/dashboard/4e10e84779aaa361fd4310c02366e37ebee7b60d/_next/static/media/token.8de4e1b8.svg" />
+                25
+              </span>
+            </div>
+          </div>
+          <div class="modal-buy">
+            <div class="qty-row">
+              Purchase Quantity:
+              <input type="number" id="qty-input" name="quantity" min="1" max="100" value="1" autocomplete="off" />
+            </div>
+            <div class="btn-row">
+              <button type="button" class="row-btn" data-qty="-1" id="btn-minus" disabled>− 1</button>
+              <button type="button" class="row-btn" data-qty="+1">+ 1</button>
+              <button type="button" class="row-btn" data-qty="+5">+ 5</button>
+              <button type="button" class="row-btn" data-qty="+10">+ 10</button>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="row-btn set-qty" data-set="1" disabled>1</button>
+              <button type="button" class="row-btn set-qty" data-set="5">5</button>
+              <button type="button" class="row-btn set-qty" data-set="10">10</button>
+              <button type="button" class="row-btn set-qty" data-set="25">25</button>
+              <button type="button" class="row-btn set-qty" data-set="50">50</button>
+              <button type="button" class="row-btn set-qty" data-set="100">100</button>
+              <button type="button" class="row-btn" id="btn-reset" disabled title="Reset">↻</button>
+            </div>
+            <button type="button" class="buy-btn" id="buy-btn">
+              <span class="buy-btn-front">
+                Buy <span id="buy-qty">1</span> for
+                <img class="buy-token" height="25" width="24" alt="Token"
+                  src="https://ac.blooket.com/dashboard/4e10e84779aaa361fd4310c02366e37ebee7b60d/_next/static/media/token.8de4e1b8.svg" />
+                <b id="buy-price">25</b>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

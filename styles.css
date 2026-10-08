@@ -102,7 +102,7 @@ html, body {
   margin-left: 10px;
 }
 
-/* Main – blue gradient + blooks pattern (like Blookbase / real dashboard) */
+/* Main */
 .main {
   margin-left: 220px;
   min-height: 100vh;
@@ -111,7 +111,6 @@ html, body {
   overflow: hidden;
 }
 
-/* Real Blooket blooks pattern */
 .bg-blooks {
   position: absolute;
   width: 300%;
@@ -134,7 +133,6 @@ html, body {
   to { background-position: 1200px 1200px; }
 }
 
-/* Page header – top left, Titan One, white */
 .page-header {
   position: relative;
   z-index: 1;
@@ -148,7 +146,6 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Watermark – bottom right, same style, smaller, 30% opacity */
 .watermark {
   position: absolute;
   bottom: 20px;
@@ -181,7 +178,7 @@ html, body {
   display: none;
 }
 
-/* Spooky pack card – visual only, not clickable */
+/* Pack card – clickable */
 .pack-card {
   margin: 0;
   padding: 0;
@@ -194,8 +191,12 @@ html, body {
   width: 210px;
   height: 260px;
   user-select: none;
-  pointer-events: none;
-  cursor: default;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.pack-card:hover {
+  transform: translateY(-2px);
 }
 
 .pack-img-container {
@@ -280,6 +281,259 @@ html, body {
   pointer-events: none;
 }
 
+/* ===== Purchase Modal ===== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  backdrop-filter: blur(2px);
+}
+
+.modal-backdrop[hidden] {
+  display: none;
+}
+
+.purchase-modal {
+  position: relative;
+  width: 640px;
+  max-width: 100%;
+  background-color: #9a49aa;
+  color: #ffffff;
+  border: 6px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  padding: 8px;
+  line-height: 1;
+  transition: color 0.2s;
+  z-index: 2;
+}
+
+.modal-close:hover {
+  color: #ffffff;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.modal-pack-preview {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+  background-color: #0bc2cf;
+  flex-shrink: 0;
+  width: 285px;
+}
+
+.modal-pack-img-wrap {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 285px;
+  height: 285px;
+  background: radial-gradient(circle, rgb(82, 82, 82) 0%, rgb(26, 26, 26) 100%);
+}
+
+.modal-pack-shadow {
+  position: absolute;
+  top: 85%;
+  left: 85%;
+  width: 100px;
+  height: auto;
+  opacity: 0.5;
+  filter: brightness(0) invert(100%);
+  transform: translate(-50%, -50%) rotate(10deg);
+}
+
+.modal-pack-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 170px;
+  height: auto;
+  transform: translate(-50%, -50%) rotate(10deg);
+  filter: drop-shadow(2px 2px rgba(0, 0, 0, 0.2));
+}
+
+.modal-pack-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 6px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  min-height: 285px;
+  padding-top: 10px;
+  text-align: left;
+}
+
+.modal-title {
+  font-size: 32px;
+  font-weight: 400;
+  font-family: "Titan One", cursive;
+  margin: 0 0 5px;
+}
+
+.row-btn {
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 4px 8px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-weight: 700;
+  font-family: "Nunito", system-ui, sans-serif;
+  font-size: 14px;
+  transition: background-color 0.2s;
+  user-select: none;
+}
+
+.row-btn:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.row-btn:disabled {
+  cursor: not-allowed;
+  background-color: rgba(0, 0, 0, 0.15);
+  color: #9a49aa;
+}
+
+.modal-tags {
+  display: flex;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+.price-tag {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  border-radius: 10px;
+  padding: 3px 8px;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: fit-content;
+  height: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  user-select: none;
+}
+
+.price-tag img {
+  margin-right: 5px;
+}
+
+.qty-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.qty-row input {
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #9a49aa;
+  width: 55px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 20px;
+  font-family: "Nunito", system-ui, sans-serif;
+  text-align: left;
+  outline: none;
+}
+
+.qty-row input::-webkit-outer-spin-button,
+.qty-row input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.qty-row input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: -10px;
+  margin-bottom: 15px;
+}
+
+.buy-btn {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  user-select: none;
+}
+
+.buy-btn-front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: #4053b3;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 18px;
+  font-family: "Nunito", system-ui, sans-serif;
+  border-radius: 10px;
+  padding: 12px 20px;
+  box-shadow: 0 4px 0 #2a3a8a;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.buy-btn:hover .buy-btn-front {
+  filter: brightness(1.08);
+}
+
+.buy-btn:active .buy-btn-front {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #2a3a8a;
+}
+
+.buy-token {
+  margin: 0 4px 0 8px;
+}
+
 /* Responsive */
 @media (max-width: 700px) {
   .sidebar {
@@ -312,5 +566,18 @@ html, body {
     font-size: 20px;
     bottom: 14px;
     right: 14px;
+  }
+  .modal-body {
+    flex-direction: column;
+  }
+  .modal-pack-preview,
+  .modal-pack-img-wrap {
+    width: 220px;
+    height: 220px;
+  }
+  .purchase-modal {
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
   }
 }
