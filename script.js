@@ -1,4 +1,4 @@
-// Simple page switcher – both pages are just white
+// Simple page switcher – both pages are just white + checkers
 
 const navLinks = document.querySelectorAll(".nav-link");
 const titleEl = document.querySelector("title");
