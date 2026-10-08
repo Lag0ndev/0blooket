@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blooket | Market</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="https://www.blooket.com/favicon.ico" />
+</head>
+<body>
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-top">
+      <img
+        class="logo"
+        height="43"
+        width="168"
+        alt="Blooket"
+        src="https://dashboard.blooket.com/_next/image?url=https://ac.blooket.com/dashboard/4e10e84779aaa361fd4310c02366e37ebee7b60d/_next/static/media/Blooket.553ca753.png&w=384&q=75"
+      />
+      <ul class="nav-list">
+        <!-- Blooks (does nothing) -->
+        <li>
+          <a class="nav-link" href="#" onclick="return false;">
+            <span class="nav-icon">
+              <svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                <path d="M128 480h256V80c0-26.5-21.5-48-48-48H176c-26.5 0-48 21.5-48 48v400zm64-384h128v32H192V96zm320 80v256c0 26.5-21.5 48-48 48h-48V128h48c26.5 0 48 21.5 48 48zM96 480H48c-26.5 0-48-21.5-48-48V176c0-26.5 21.5-48 48-48h48v352z" fill="currentColor"/>
+              </svg>
+            </span>
+            <span class="nav-text">Blooks</span>
+          </a>
+        </li>
+        <!-- Market (active) -->
+        <li>
+          <a class="nav-link active" href="#">
+            <span class="nav-icon">
+              <svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 616 512" xmlns="http://www.w3.org/2000/svg">
+                <path d="M602 118.6L537.1 15C531.3 5.7 521 0 510 0H106C95 0 84.7 5.7 78.9 15L14 118.6c-33.5 53.5-3.8 127.9 58.8 136.4 4.5.6 9.1.9 13.7.9 29.6 0 55.8-13 73.8-33.1 18 20.1 44.3 33.1 73.8 33.1 29.6 0 55.8-13 73.8-33.1 18 20.1 44.3 33.1 73.8 33.1 29.6 0 55.8-13 73.8-33.1 18.1 20.1 44.3 33.1 73.8 33.1 4.7 0 9.2-.3 13.7-.9 62.8-8.4 92.6-82.8 59-136.4zM529.5 288c-10 0-19.9-1.5-29.5-3.8V384H116v-99.8c-9.6 2.2-19.5 3.8-29.5 3.8-6 0-12.1-.4-18-1.2-5.6-.8-11.1-2.1-16.4-3.6V480c0 17.7 14.3 32 32 32h448c17.7 0 32-14.3 32-32V283.2c-5.4 1.6-10.8 2.9-16.4 3.6-6.1.8-12.1 1.2-18.2 1.2z" fill="currentColor"/>
+              </svg>
+            </span>
+            <span class="nav-text">Market</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="sidebar-footer">
+      <p class="fake-label">FAKE MARKET</p>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main">
+    <header class="top-bar">
+      <h1>Market</h1>
+      <div class="token-display">
+        <span class="token-icon">🪙</span>
+        <span id="token-count">5000</span>
+        <span class="token-label">Tokens</span>
+      </div>
+    </header>
+
+    <section class="packs-section">
+      <h2>Packs</h2>
+      <div class="packs-grid" id="packs-grid">
+        <!-- Packs injected by JS -->
+      </div>
+    </section>
+
+    <section class="history-section">
+      <h2>Recent Opens</h2>
+      <ul id="open-history" class="history-list">
+        <li class="empty">No packs opened yet...</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Buy Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <h3 id="modal-title">Buy Pack</h3>
+      <p id="modal-desc"></p>
+      <div class="qty-row">
+        <label>Quantity:</label>
+        <input type="number" id="qty-input" min="1" max="50" value="1" />
+      </div>
+      <p class="total-cost">Total: <span id="total-cost">0</span> tokens</p>
+      <button class="buy-btn" id="confirm-buy">Buy & Open</button>
+    </div>
+  </div>
+
+  <div id="result-modal" class="modal hidden">
+    <div class="modal-content result">
+      <h3>You got...</h3>
+      <div id="result-blook" class="result-blook"></div>
+      <p id="result-rarity" class="result-rarity"></p>
+      <button class="buy-btn" id="result-close">Nice!</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
