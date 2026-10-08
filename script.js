@@ -1,4 +1,4 @@
-// Simple page switcher – both pages are just white + checkers
+// Simple page switcher – both pages show the checkers background
 
 const navLinks = document.querySelectorAll(".nav-link");
 const titleEl = document.querySelector("title");
