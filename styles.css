@@ -70,7 +70,6 @@ html, body {
   cursor: pointer;
 }
 
-/* Hover looks exactly like the active (white) state */
 .nav-link:hover {
   background-color: #ffffff;
   color: #9a49aa;
@@ -117,7 +116,7 @@ html, body {
   text-transform: uppercase;
 }
 
-/* Main – white with checkers pattern */
+/* Main */
 .main {
   margin-left: 220px;
   min-height: 100vh;
@@ -126,26 +125,41 @@ html, body {
   overflow: hidden;
 }
 
-/* Authentic-style Blooket checkers (rotated faint pattern) */
-.checkers {
+/* Real Blooket blooks pattern (from dashboard) */
+.bg-blooks {
   position: absolute;
+  width: 300%;
+  height: 300%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(15deg);
+  background-image: url("https://ac.blooket.com/dashboard/65a43218fd1cabe52bdf1cda34613e9e.png");
+  background-size: 1200px 1200px;
+  background-repeat: repeat;
+  background-position: 0 0;
   opacity: 0.1;
-  width: 200%;
-  height: 200%;
-  background-image:
-    linear-gradient(45deg, #000 25%, transparent 25%),
-    linear-gradient(-45deg, #000 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #000 75%),
-    linear-gradient(-45deg, transparent 75%, #000 75%);
-  background-size: 40px 40px;
-  background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
-  margin: 0;
+  pointer-events: none;
+  animation: bgScroll 40s linear infinite;
+  z-index: 0;
+}
+
+@keyframes bgScroll {
+  from { background-position: 0 0; }
+  to { background-position: 1200px 1200px; }
+}
+
+/* Page header – top left, Titan One, white */
+.page-header {
+  position: relative;
+  z-index: 1;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 48px;
+  font-family: "Titan One", cursive;
+  text-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+  margin: 20px 0 20px 20px;
   padding: 0;
   box-sizing: border-box;
-  pointer-events: none;
 }
 
 /* Responsive */
@@ -172,5 +186,9 @@ html, body {
   }
   .main {
     margin-left: 70px;
+  }
+  .page-header {
+    font-size: 36px;
+    margin-left: 16px;
   }
 }

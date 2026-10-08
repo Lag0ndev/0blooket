@@ -6,7 +6,7 @@
   <title>Blooket | Market</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Titan+One&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="https://www.blooket.com/favicon.ico" />
 </head>
@@ -22,7 +22,6 @@
         src="https://dashboard.blooket.com/_next/image?url=https://ac.blooket.com/dashboard/4e10e84779aaa361fd4310c02366e37ebee7b60d/_next/static/media/Blooket.553ca753.png&w=384&q=75"
       />
       <ul class="nav-list">
-        <!-- Market on top -->
         <li>
           <a class="nav-link active" id="nav-market" href="#" data-page="market">
             <span class="nav-icon">
@@ -33,7 +32,6 @@
             <span class="nav-text">Market</span>
           </a>
         </li>
-        <!-- Blooks below -->
         <li>
           <a class="nav-link" id="nav-blooks" href="#" data-page="blooks">
             <span class="nav-icon">
@@ -51,9 +49,12 @@
     </div>
   </nav>
 
-  <!-- Main Content with checkers background -->
+  <!-- Main Content -->
   <main class="main" id="main">
-    <div class="checkers" style="background-size: 1000px auto;"></div>
+    <!-- Real Blooket blooks background pattern -->
+    <div class="bg-blooks"></div>
+    <!-- Page title (top-left) -->
+    <h1 class="page-header" id="page-header">Market</h1>
   </main>
 
   <script src="script.js"></script>
