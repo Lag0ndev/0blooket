@@ -508,7 +508,9 @@ html, body {
   margin-bottom: 15px;
 }
 
+/* Blooket-style layered 3D buy button */
 .buy-btn {
+  position: relative;
   width: 100%;
   border: none;
   background: transparent;
@@ -516,13 +518,28 @@ html, body {
   cursor: pointer;
   font-family: inherit;
   user-select: none;
+  color: #ffffff;
+  text-align: left;
+  outline: none;
+}
+
+.buy-btn-back {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 4px;
+  bottom: 0;
+  background: #2a3a8a;
+  border-radius: 10px;
+  z-index: 0;
 }
 
 .buy-btn-front {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
   background: #4053b3;
   color: #ffffff;
   font-weight: 800;
@@ -530,9 +547,26 @@ html, body {
   font-family: "Nunito", system-ui, sans-serif;
   border-radius: 10px;
   padding: 10px 20px;
-  box-shadow: 0 4px 0 #2a3a8a;
-  transition: transform 0.1s, box-shadow 0.1s;
   line-height: 1.2;
+  transition: transform 0.1s;
+}
+
+.buy-btn-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.buy-price-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.buy-token {
+  margin: 0 5px 0 10px;
+  width: 24px;
+  height: 25px;
 }
 
 .buy-btn:hover .buy-btn-front {
@@ -541,11 +575,6 @@ html, body {
 
 .buy-btn:active .buy-btn-front {
   transform: translateY(3px);
-  box-shadow: 0 1px 0 #2a3a8a;
-}
-
-.buy-token {
-  margin: 0 4px 0 8px;
 }
 
 /* Responsive */
