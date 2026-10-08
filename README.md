@@ -1,20 +1,10 @@
-# 0blooket – Fake Blooket Market
+# 0blooket – Fake Blooket
 
-A simple static recreation of the Blooket Market page for fun / educational purposes.
+Minimal recreation with only the purple sidebar.
 
-## Features
-- Simplified sidebar with only **Blooks** (does nothing) and **Market**
-- 12 fake packs with different costs and drop tables
-- Token system (starts with 5000)
-- Buy & open packs, see rarity results
-- Recent opens history
+- **Blooks** and **Market** buttons
+- Hovering either button turns it white (same as active)
+- Click to switch between them (both pages are pure white)
+- Sidebar always visible
 
-## How to run
-Just open `index.html` in a browser, or serve the folder with any static server.
-
-```bash
-npx serve .
-```
-
-## Disclaimer
-This is an unofficial fan recreation. Not affiliated with Blooket in any way.
+Just open `index.html` in a browser.
