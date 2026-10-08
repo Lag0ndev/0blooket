@@ -8,7 +8,7 @@ html, body {
   max-width: 100vw;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  background: #ffffff;
+  background: #0bc2cf;
   color: #3a3a3a;
   font-family: "Nunito", system-ui, sans-serif;
   height: 100%;
@@ -116,16 +116,16 @@ html, body {
   text-transform: uppercase;
 }
 
-/* Main */
+/* Main – blue gradient + blooks pattern (like Blookbase / real dashboard) */
 .main {
   margin-left: 220px;
   min-height: 100vh;
-  background: #ffffff;
+  background: linear-gradient(165deg, #0bc2cf, #349aef);
   position: relative;
   overflow: hidden;
 }
 
-/* Real Blooket blooks pattern (from dashboard) */
+/* Real Blooket blooks pattern */
 .bg-blooks {
   position: absolute;
   width: 300%;
