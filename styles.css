@@ -108,7 +108,8 @@ html, body {
   min-height: 100vh;
   background: linear-gradient(165deg, #0bc2cf, #349aef);
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .bg-blooks {
@@ -164,7 +165,7 @@ html, body {
   opacity: 0.3;
 }
 
-/* Packs row */
+/* Packs row (Market) */
 .packs-row {
   position: relative;
   z-index: 1;
@@ -178,7 +179,7 @@ html, body {
   display: none;
 }
 
-/* Pack card – clickable */
+/* Pack card */
 .pack-card {
   margin: 0;
   padding: 0;
@@ -279,6 +280,147 @@ html, body {
   width: 100%;
   height: 100%;
   pointer-events: none;
+}
+
+/* ===== Blooks page ===== */
+.blooks-page {
+  position: relative;
+  z-index: 1;
+  padding: 0 20px 40px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.blooks-page.hidden {
+  display: none;
+}
+
+.blooks-packs-container {
+  margin: 0;
+  box-sizing: border-box;
+  border: 6px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+  background-color: #9a49aa;
+  width: 100%;
+  color: #ffffff;
+}
+
+.blooks-scrollbox {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 10px;
+  max-height: calc(100dvh - 180px);
+  overflow-y: auto;
+}
+
+.blooks-pack {
+  margin: 0 0 20px;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.blooks-pack-header {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+}
+
+.blooks-pack-title {
+  margin: 0 0 4px;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 32px;
+  font-weight: 300;
+  font-family: "Titan One", cursive;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+}
+
+.blooks-divider {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0 0 10px;
+  border-radius: 2px;
+  background-color: #ffffff;
+  width: 100%;
+  height: 3px;
+}
+
+.blooks-grid {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 60px);
+}
+
+/* Locked blook cell */
+.blook-cell {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  width: 55px;
+  height: 70px;
+}
+
+.blook-cell button {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: inherit;
+  user-select: none;
+  border: none;
+  background: none;
+  cursor: default;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.blook-cell img {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  filter: brightness(0);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.blook-lock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.blook-lock svg {
+  width: 12px;
+  height: 12px;
+  fill: #ffffff;
+  opacity: 0.95;
 }
 
 /* ===== Purchase Modal ===== */
@@ -508,7 +650,6 @@ html, body {
   margin-bottom: 15px;
 }
 
-/* Real Blooket layered 3D buy button (_button / _back / _front) */
 .buy-btn {
   position: relative;
   display: inline-block;
@@ -632,5 +773,8 @@ html, body {
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
+  }
+  .blooks-pack-title {
+    font-size: 24px;
   }
 }
