@@ -1,11 +1,22 @@
 # 0blooket – Fake Blooket
 
-Minimal recreation with the purple sidebar + checkers background.
+Minimal recreation of the Blooket dashboard (Market + My Blooks).
 
-- **Market** button on top, **Blooks** below
-- Hover turns either button white (same as active)
-- Click to switch between them
-- Main area filled with rotated faint checker pattern
-- Sidebar always visible
+## Live routes (after Vercel deploy)
 
-Just open `index.html` in a browser.
+- `/` or `/market` → Market page
+- `/blooks` → My Blooks page
+
+## Features
+
+- Purple sidebar with Market / Blooks nav (hover = white)
+- Market: Spooky pack card + purchase modal
+- My Blooks: all packs (no Hidden Blooks), exact Font Awesome lock icons on every blook
+- Path-based routing works with `vercel.json` rewrites
+- No extra body scroll past the packs area
+
+## Deploy
+
+Connect the repo to Vercel. The included `vercel.json` rewrites `/blooks` and `/market` to `index.html` so client-side page switching works with clean URLs.
+
+Open `index.html` locally or visit the Vercel URL after deploy.
