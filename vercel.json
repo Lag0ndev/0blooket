@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/blooks", "destination": "/index.html" },
+    { "source": "/market", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
