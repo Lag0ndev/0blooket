@@ -1,4 +1,5 @@
-// Page switcher + purchase modal + locked Blooks page
+// Page switcher + purchase modal + Blooks page (locks, score, buttons)
+// Supports /blooks and /market via Vercel rewrites + pathname
 
 const navLinks = document.querySelectorAll(".nav-link");
 const titleEl = document.querySelector("title");
@@ -6,6 +7,8 @@ const pageHeader = document.getElementById("page-header");
 const packsRow = document.getElementById("packs-row");
 const blooksPage = document.getElementById("blooks-page");
 const blooksContainer = document.getElementById("blooks-packs-container");
+const headerButtons = document.getElementById("header-buttons");
+const scorePanel = document.getElementById("score-panel");
 
 const packCard = document.getElementById("spooky-pack");
 const backdrop = document.getElementById("modal-backdrop");
@@ -18,7 +21,8 @@ const btnReset = document.getElementById("btn-reset");
 
 const PRICE = 25;
 
-const LOCK_SVG = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V11a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3zm0 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg>`;
+// Exact lock SVG from request
+const LOCK_SVG = `<svg class="svg-inline--fa fa-lock fa-w-14 BlookModal_lock__gk2Dn" aria-hidden="true" focusable="false" role="img" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" style="margin:0;padding:0;box-sizing:border-box;display:inline-block;height:1em;vertical-align:-0.125em;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.7;z-index:9;color:#ffffff;font-size:24px;width:0.875em;overflow:visible"><path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z" fill="currentColor"/></svg>`;
 
 function renderLockedBlooks() {
   if (!blooksContainer || typeof BLOOKS_DATA === "undefined") return;
@@ -88,17 +92,36 @@ function setPage(page) {
     if (pageHeader) pageHeader.textContent = "My Blooks";
     if (packsRow) packsRow.classList.add("hidden");
     if (blooksPage) blooksPage.classList.remove("hidden");
+    if (headerButtons) headerButtons.classList.remove("hidden");
+    if (scorePanel) scorePanel.classList.remove("hidden");
     closeModal();
     if (blooksContainer && !blooksContainer.dataset.rendered) {
       renderLockedBlooks();
       blooksContainer.dataset.rendered = "1";
+    }
+    if (location.pathname !== "/blooks" && !location.pathname.endsWith("/blooks")) {
+      try { history.replaceState(null, "", "/blooks"); } catch (_) {}
     }
   } else {
     titleEl.textContent = "Blooket | Market";
     if (pageHeader) pageHeader.textContent = "Market";
     if (packsRow) packsRow.classList.remove("hidden");
     if (blooksPage) blooksPage.classList.add("hidden");
+    if (headerButtons) headerButtons.classList.add("hidden");
+    if (scorePanel) scorePanel.classList.add("hidden");
+    if (location.pathname !== "/market" && !location.pathname.endsWith("/market") && location.pathname !== "/") {
+      try { history.replaceState(null, "", "/market"); } catch (_) {}
+    }
   }
+}
+
+function getInitialPage() {
+  const path = (location.pathname || "").toLowerCase();
+  if (path.includes("blooks")) return "blooks";
+  if (path.includes("market")) return "market";
+  const hash = (location.hash || "").toLowerCase();
+  if (hash.includes("blooks")) return "blooks";
+  return "market";
 }
 
 navLinks.forEach((link) => {
@@ -191,3 +214,6 @@ if (buyBtn) {
     closeModal();
   });
 }
+
+// Init
+setPage(getInitialPage());
